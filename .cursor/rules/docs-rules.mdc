@@ -1,0 +1,13 @@
+---
+description: Convenções ao editar documentação MkDocs da Appuracao
+globs: docs/**/*.md, docs/mkdocs.yml
+alwaysApply: false
+---
+
+# Documentação (docs/)
+
+- **Idioma:** português (pt-BR). Manter consistência de termos (ex.: "Boletim de Urna", "QR Code", "ingestão").
+- **Nav:** ao adicionar ou renomear páginas, atualizar `docs/mkdocs.yml` (seção `nav`) na mesma alteração.
+- **Estrutura:** conteúdo principal em `docs/docs/`; índice em `index.md`; Lambdas em `docs/docs/lambdas/` (ingest, validate-and-store, aggregate-and-export).
+- **Build:** MkDocs Material; verificar com `mkdocs build` ou `mkdocs serve` a partir da pasta `docs/`.
+- **Após alterações no projeto:** usar a skill `update-docs-after-changes` para garantir que API, Lambdas e arquitetura estejam refletidos na documentação.

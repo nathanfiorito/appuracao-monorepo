@@ -1,0 +1,25 @@
+---
+description: Convenções de branches e commits (Conventional Commits)
+globs: []
+alwaysApply: true
+---
+
+# Convenções Git
+
+## Branches
+
+- **Padrão:** `tipo/descricao-curta` (minúsculo, hífens).
+- **Tipos:** `feature/` (nova funcionalidade), `fix/` (correção), `docs/` (apenas documentação), `chore/` (manutenção, CI, deps), `refactor/` (refatoração sem mudança de comportamento).
+- Exemplos: `feature/ingest-batch`, `fix/validacao-qrbu`, `docs/api-payload`.
+
+## Commits
+
+- **Formato:** Conventional Commits — `tipo(escopo opcional): descrição curta`.
+- **Tipos:** `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `ci`.
+- **Descrição:** imperativo, sem ponto final; ex.: "adiciona validação de posicao_total" (não "Adicionada validação").
+- **Corpo (opcional):** detalhes ou referência a issue; quebra de linha entre título e corpo.
+
+Exemplos:
+- `feat(ingest): aceita array de QRs no POST`
+- `fix(validate-and-store): corrige parse do HASH cumulativo`
+- `docs(api): documenta códigos de resposta 4xx/5xx`
