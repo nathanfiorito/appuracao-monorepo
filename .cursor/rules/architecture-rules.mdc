@@ -1,0 +1,30 @@
+---
+description: Core architecture principles
+globs: []
+alwaysApply: true
+---
+
+# Appuracao Architecture Principles
+
+Aplicação serverless para **leitura e totalização de QR Codes de Boletim de Urna (BU)**. O front-end decodifica QRs e envia apenas o texto; o backend valida, armazena e agrega.
+
+## Fluxo
+
+1. **Ingressão:** POST com conteúdo do QR → API Gateway → Lambda Ingest → uma mensagem SQS por QR.
+2. **Processamento:** SQS → Lambda **Validar e Armazenar** → valida formato/assinatura TSE → grava em DynamoDB.
+3. **Agregação:** EventBridge (schedule) → Lambda **Agregar e Exportar** → lê DynamoDB, monta boletins, soma votos → JSON por município no S3.
+4. **Entrega:** S3 → CloudFront → front-end (resultados parciais).
+
+## Nomes e convenções
+
+- Tabela DynamoDB: `boletim_urna_registros`.
+- S3: `resultados/{codigo_municipio}.json`.
+- Boletim: 1 a 4 QRs; campos `boletim_id`, `posicao_atual`, `posicao_total`, `conteudo_qr`.
+
+## Decisões
+
+- SQS invoca diretamente a Lambda Validar e Armazenar (sem Step Function).
+- Agregação por schedule (ex.: 5 min), não por mensagem.
+- Um JSON por cidade por execução (escrita atômica).
+
+Referência completa: `docs/docs/` (arquitetura.md, api.md, formato-tse.md, lambdas/*.md).
