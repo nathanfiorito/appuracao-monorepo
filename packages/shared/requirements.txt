@@ -1,0 +1,1 @@
+# Dependências do pacote shared (MVP: nenhuma obrigatória)
