@@ -1,0 +1,38 @@
+site_name: Appuracao - Documentação
+site_description: Documentação da aplicação de leitura e totalização de QR Codes de Boletim de Urna
+site_url: https://github.com/pages  # substituir pelo URL real do GitHub Pages após ativar
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Modo escuro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Modo claro
+
+plugins:
+  - search
+
+nav:
+  - Início: index.md
+  - Arquitetura: arquitetura.md
+  - Formato TSE (QR BU): formato-tse.md
+  - API: api.md
+  - Lambdas:
+    - Ingest: lambdas/ingest.md
+    - Validar e Armazenar: lambdas/validate-and-store.md
+    - Agregar e Exportar: lambdas/aggregate-and-export.md
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - tables
