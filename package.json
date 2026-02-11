@@ -1,0 +1,12 @@
+{
+  "name": "appuracao-monorepo",
+  "private": true,
+  "description": "Monorepo Appuracao — front-end e Lambdas",
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "build:web": "pnpm --filter web build"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

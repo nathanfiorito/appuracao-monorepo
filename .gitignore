@@ -1,3 +1,8 @@
+# Node
+node_modules/
+dist/
+*.local
+
 # MkDocs
 docs/.venv/
 docs/site/
